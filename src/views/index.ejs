@@ -1,0 +1,54 @@
+<% include partials/header %>
+
+
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Add new movie</h4>
+                </div>
+                <form class="card-body" action="/add" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="title" placeholder="Movie title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description" cols="30" rows="10" class="form-control"
+                            placeholder="Description of your movie"></textarea>
+                    </div>
+                    <input type="submit" value="Add movie" class="btn btn-primary btn-block">
+                </form>
+            </div>
+        </div>
+
+        <!--Here the content of elements created-->
+
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover">
+                <% for(i = 0; i < vids.length; i++) { %>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>N°</th>
+                        <th><%= vids[i].title %></th>
+                        <th><a href="/turn/<%= vids[i]._id %>" class="btn <%= vids[i].status ? 'btn-success':'btn-danger' %>">
+                            Visto
+                        </a></th>
+                        <th><a href="/edit/<%= vids[i]._id %>" class="btn btn-dark">Edit</a>
+                            <a href="/delete/<%= vids[i]._id %>" class="btn btn-dark">Delete</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td colspan="3" scope="rowgroup"><%= vids[i].description %></td> 
+                    </tr>
+                <tbody>
+                    <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>

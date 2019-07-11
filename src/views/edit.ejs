@@ -1,0 +1,31 @@
+<% include partials/header %>
+
+
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-7 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Edit movie</h4>
+                </div>
+                <form class="card-body" action="/edit/<%= movie._id %>" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="title" value="<%= movie.title %>" class=" form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description" cols="30" rows="10" class="form-control"><%= movie.description %></textarea>
+                    </div>
+                    <input type="submit" value="Update movie" class="btn btn-primary btn-block">
+                </form>
+            </div>
+        </div>
+
+        <!--Here the content of elements created-->
+
+        
+    </div>
+</div>
+
+<% include partials/footer %>
